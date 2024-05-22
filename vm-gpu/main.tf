@@ -23,6 +23,15 @@ resource "google_compute_instance" "instance-2" {
   boot_disk {
     auto_delete = true
     initialize_params {
+      # To find GCP images: https://cloud.google.com/compute/docs/images
+      # Format: projects/<project-id>/global/images/<image-name>
+      # Example: projects/deeplearning-platform-release/global/images/common-cpu-v20230615-debian-11-py310
+
+      # To find machine images: https://cloud.google.com/compute/docs/machine-images
+      # Format: projects/<project-id>/global/machineImages/<machine-image-name>
+
+      # You can query image id using: gcloud compute images list --project <project-id> --no-standard-images
+      # To query common AI images: gcloud compute images list --project deeplearning-platform-release | less
       image = "ubuntu-os-cloud/ubuntu-2204-lts"
       size  = 150
     }
