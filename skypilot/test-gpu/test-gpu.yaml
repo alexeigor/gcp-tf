@@ -1,0 +1,24 @@
+resources:
+  # image_id: docker:nvcr.io/nvidia/pytorch:23.10-py3
+  accelerators: T4
+  image_id: projects/ubuntu-os-cloud/global/images/ubuntu-2204-jammy-v20240519
+  use_spot: true
+  cloud: gcp
+
+# Working directory (optional) containing the project codebase.
+# Its contents are synced to ~/sky_workdir/ on the cluster.
+workdir: .
+
+setup: |
+  # Commands to run inside the container
+  echo "Running setup."
+
+run: |
+  # Commands to run inside the container
+
+  # Since SkyPilot tasks are run inside a fresh conda "(base)" environment,
+  # deactivate first to access what the Docker image has already installed.
+  # source deactivate
+  nvidia-smi
+  # pip install torch
+  python -c 'import torch; print(torch.__version__)'
