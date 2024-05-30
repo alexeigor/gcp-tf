@@ -3,12 +3,10 @@
 export DEBIAN_FRONTEND=noninteractive
 sudo echo "\$nrconf{restart} = 'a'" >> /etc/needrestart/needrestart.conf
 
-sudo apt-get update -y && sudo apt install -y python3-pip mc pipx git wget
+sudo DEBIAN_FRONTEND=noninteractive apt-get update -y && \
+  sudo DEBIAN_FRONTEND=noninteractive apt upgrade -y && \
+  sudo DEBIAN_FRONTEND=noninteractive apt install -y python3-pip mc pipx git wget
 pip install --upgrade pip
-
-# Install nvidia drivers
-sudo apt update
-sudo apt upgrade -y
 
 # Check if there's a video card with H100 model (2330 GH100 [H100 SXM5 80GB]
 if lspci -nnk | grep -q "[10de:2330]"; then
@@ -17,11 +15,11 @@ if lspci -nnk | grep -q "[10de:2330]"; then
 fi
 
 # Install Ubuntu drivers common package
-sudo apt install ubuntu-drivers-common -y
+sudo DEBIAN_FRONTEND=noninteractive apt install ubuntu-drivers-common -y
 
 recommended_driver=$(ubuntu-drivers devices | grep 'nvidia' | cut -d ',' -f 1 | grep 'recommended')
 package_name=$(echo $recommended_driver | awk '{print $3}')
-sudo apt install $package_name -y
+sudo DEBIAN_FRONTEND=noninteractive apt install $package_name -y
 
 sudo reboot
 
