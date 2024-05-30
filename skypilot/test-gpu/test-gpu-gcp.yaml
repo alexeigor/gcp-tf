@@ -1,6 +1,6 @@
 resources:
   # image_id: docker:nvcr.io/nvidia/pytorch:23.10-py3
-  accelerators: T4
+  accelerators: L4
   image_id: projects/ubuntu-os-cloud/global/images/ubuntu-2204-jammy-v20240519
   use_spot: True
   cloud: gcp

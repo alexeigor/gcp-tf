@@ -6,7 +6,7 @@ sudo echo "\$nrconf{restart} = 'a'" >> /etc/needrestart/needrestart.conf
 sudo apt-get update -y && sudo apt install -y python3-pip mc pipx git wget
 pip install --upgrade pip
 
-
+# Install nvidia drivers
 sudo apt update
 sudo apt upgrade -y
 
