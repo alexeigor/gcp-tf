@@ -31,7 +31,7 @@ pipx install nvitop
 # Docker Install
 curl https://get.docker.com | sh \
   && sudo systemctl --now enable docker
-sudo systemctl status docker
+# sudo systemctl status docker
 
 # create the docker group and add your user
 sudo groupadd docker
