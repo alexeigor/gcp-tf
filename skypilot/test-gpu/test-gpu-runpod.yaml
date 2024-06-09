@@ -1,10 +1,9 @@
 resources:
   # image_id: docker:nvcr.io/nvidia/pytorch:23.10-py3
-  accelerators: A100-80GB:1 # L4:1
+  accelerators: A100-80GB:1
   # image_id: projects/ubuntu-os-cloud/global/images/ubuntu-2204-jammy-v20240519
-  use_spot: True
-  cloud: gcp
-  # region: asia-east1
+  # use_spot: True
+  cloud: runpod
 
 # Working directory (optional) containing the project codebase.
 # Its contents are synced to ~/sky_workdir/ on the cluster.
